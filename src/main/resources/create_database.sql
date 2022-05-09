@@ -14,5 +14,23 @@ CREATE TABLE cliente(
     nome varchar(50) NOT NULL,
     sexo char NOT NULL,
     data_nascimento date NOT NULL,
+    endereco_id int,
+    PRIMARY KEY (id),
+    FOREIGN KEY (endereco_id) REFERENCES endereco(id)
+);
+
+CREATE TABLE endereco(
+    id int,
+    cep varchar(20),
+    rua varchar(30),
+    bairro varchar(20),
+    numero int,
+    cidade varchar(20),
+    uf varchar(2),
     PRIMARY KEY (id)
 )
+
+ALTER TABLE cliente ADD CONSTRAINT id_endereco_id
+FOREIGN KEY(endereco_id) REFERENCES endereco (id);
+
+
