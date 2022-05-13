@@ -14,13 +14,13 @@ CREATE TABLE cliente(
     nome varchar(50) NOT NULL,
     sexo char NOT NULL,
     data_nascimento date NOT NULL,
-    endereco_id int,
+    endereco_id bigint not null,
     PRIMARY KEY (id),
-    FOREIGN KEY (endereco_id) REFERENCES endereco(id)
+    FOREIGN KEY(endereco_id) REFERENCES endereco (id)
 );
 
 CREATE TABLE endereco(
-    id int,
+    id bigint not null,
     cep varchar(20),
     rua varchar(30),
     bairro varchar(20),
