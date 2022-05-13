@@ -1,11 +1,15 @@
 package api.api_exe.entities;
 
 import java.sql.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -47,4 +51,11 @@ public class Cliente {
     @Column(name = "data_nascimento")
     @NotNull(message = "Data de Nascimento é obrigatório")
     Date data_nascimento;
+
+    @Column(name = "enderecoId")
+    @NotNull
+    Long enderecoId;
+
+    @OneToOne(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Endereco endereco;
 }
